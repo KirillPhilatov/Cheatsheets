@@ -1,0 +1,69 @@
+# Documentation
+# https://docs.alpinelinux.org/
+# user handbook
+# https://docs.alpinelinux.org/user-handbook/0.1a/index.html
+
+# APK
+apk info --who-owns /sbin/lbu # find package name
+
+apk -v cache clean # clean cache
+
+apk -vv info | sort # find all installed packages
+
+apk info -L <package> # list content of package
+
+# SOUND
+
+1. apk add alsa-utils alsa-utils-doc alsa-lib alsaconf alsa-ucm-conf
+2. rc-service alsa start
+3. rc-update add alsa
+
+https://wiki.archlinux.org/title/Advanced_Linux_Sound_Architecture#ALSA_firmware
+
+By default ALSA has all channels muted. Those have to be unmuted manually.
+
+Unmute with amixer
+Unmuting the sound card's master volume can be done by using amixer:
+
+$ amixer sset Master unmute
+$ amixer sset Speaker unmute
+$ amixer sset Headphone unmute
+
+Unmute with alsamixer
+Unmuting the sound card can be done using alsamixer:
+
+$ alsamixer
+The MM label below a channel indicates that the channel is muted, and OO indicates that it is open.
+
+Scroll to the Master and PCM channels with the ← and → keys and unmute them by pressing the m key.
+
+Use the ↑ key to increase the volume and obtain a value of 0 dB gain. The gain can be found in the upper left next to the Item: field.
+
+# Test sound
+$ speaker-test -c 2
+
+# MISC
+
+mkpasswd # get password hash for /etc/shadow
+
+Prevent udhpc from rewriting /etc/resolv.conf:
+in /usr/share/udhcpc/default.script
+RESOLV_CONF="NO"
+
+# Config files for daemons
+/etc/conf.d # ~ analogue for RedHat /etc/sysconfig
+
+# Install cpan
+apk add perl-utils
+
+# Prevent overwriting resolv.conf
+RESOLV_CONF=no # in /etc/udhcpc/udhcpc.conf
+
+# Generate answers file for setup-alpine
+setup-alpine -c answers.txt
+
+# Make LVM partitions on disk sda
+setup-disk -L /dev/sda
+
+# See services and its statuses
+rc-status

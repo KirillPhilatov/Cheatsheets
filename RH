@@ -1,0 +1,85 @@
+RPM
+# convert packages from .rpm to .deb and other formats
+alien
+
+# Time of installation
+LC_TIME="en_DK" rpm -qia |grep "Install Date"|awk '{print $3}'|uniq |sort -r|tail -n 1
+=========================
+
+YUM
+# enable epel repo on RHEL8
+dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+=========================
+# enable modules (module is group of related rackages)
+dnf module enable <module:STREAM>
+# e.g. on Oracle linux 8
+dnf module enable idm:DL1
+dnf install ipa-server
+=========================
+# list package content
+dnf repoquery -l bsd-games
+=========================
+# enable SCL repo on SL6
+yum-config-manager --add-repo=https://copr.fedoraproject.org/coprs/rhscl/centos-release-scl/repo/epel-6/rhscl-centos-release-^Cl-epel-6.rep
+yum install centos-release-scl
+=========================
+# enable ius repo on SL6
+# python36
+curl 'https://setup.ius.io/' -o setup-ius.sh
+bash ./setup-ius.sh
+yum install https://repo.ius.io/ius-release-el6.rpm
+=========================
+# Undo yum operation (E.g. remove package with dependencies)
+yum history undo <NUM> # never use it
+
+# List files of package
+repoquery -l <pkg_name>
+=========================
+
+SELINUX
+
+# list selinux boolean values
+getsebool -a
+
+# set policy
+setsebool httpd_allow_userdirs on
+
+# list all contexts, all ports
+semanage fcontext -l
+semanage port -l
+
+# set context on dir recursively
+semanage fcontext -a -t <context> '/dir/(/*)?'
+
+# allow port
+semanage -a -t http_port_t -p tcp 8080
+
+# troubleshooting
+sealert -l <id> # get id from logs
+
+=========================
+
+# validate kickstart.cfg file
+ksvalidator kickstart.cfg
+
+========================
+# generate unit file for container
+podman generate systemd --files --new
+
+# inspect container
+skopeo inspect docker://registry
+
+========================
+RESCUE MODE
+
+mount -o bind /dev /mnt/sysimage/dev
+mount -o bind /sys /mnt/sysimage/sys
+mount -t proc /proc /mnt/sysimage/proc
+mount -o bind /dev/shm /mnt/sysimage/dev/shm
+mount -o bind /run /mnt/sysimage/dev/run
+========================
+
+MISC
+# tune performance
+tuned-adm list # list profiles
+tuned-adm profile powersave # set powersafe profile

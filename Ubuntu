@@ -1,0 +1,51 @@
+# List of installed pkgs
+apt list --installed
+
+# Get info about pkg
+apt show <pkg-name>
+
+# List files inside installed pkg
+dpkg-query -L <pkg-name>
+
+# List files inside deb file
+dpkg --contents <pkg.deb>
+
+# Find package which provides file
+dpkg -S path/to/file
+
+# Hold package (prohibit upgrade)
+apt-mark hold <pkg-name>
+
+# Get sources of pkgs to build manually
+apt-get source <pkg-name>
+
+# Get list of packages
+dpkg --list
+
+# convert packages from .rpm to .deb and other formats
+alien
+
+# Dynamically generated motd catalog
+/etc/update-motd
+
+# Disable dynamic motd
+ENABLED=0 in /etc/default/motd-news
+
+# Full upgrade to next release
+apt update
+apt upgrade
+reboot
+do-release-update
+
+SNAP
+# list snap packages
+# see if you have double packages
+snap list
+
+
+APACHE
+# enable mod-php
+a2enmod php
+
+# Install good old network scripts
+apt install ifupdown

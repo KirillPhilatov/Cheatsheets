@@ -1,0 +1,33 @@
+# give ~ root privileges to container
+docker run --privileged <container>
+
+# See docker space usage
+docker system df
+
+# remove unused containers, networks and so on
+docker system prune
+
+# add record in /etc/hosts in container
+# add in docker-compose:
+extra_hosts:
+  - "name:IP"
+
+# set sysctl param in container
+# add in docker-compose:
+  sysctls
+    net.core.somaxconn: 65535
+==========================
+# note that you cannot COPY files not from docker context
+# absolute path in Dockerfile starts from `pwd`
+
+# if you got "sshd: no hostkeys available -- exiting alpine"
+# when trying to start sshd in alpine containeryou can add
+# /usr/bin/ssh-keygen -A
+# in your Dockerfile to generate host checking keys
+# https://www.linuxfixes.com/2022/05/solved-setup-docker-container-with-ssh.html
+
+# Any command after image name in "docker run" redefines CMD in Dockerfile
+# https://habr.com/ru/company/southbridge/blog/329138/
+
+# Docker networks
+# https://habr.com/ru/post/334004/

@@ -1,0 +1,42 @@
+KVM
+=========================
+# install os with iso image
+virt-install --os-variant alpinelinux3.17 --name alpine-test --ram=1024 --vcpus=1 --cdrom <path_to_iso> --hvm --virt-type=kvm
+
+# use phisycal disk image for VM creation
+virt-install  --import --os-variant scientificlinux7.9 --name <NAME>  --ram=1024 --vcpus=1 --disk path=/
+
+# convert raw image to qcow2
+qemu-img convert -f raw /path/to.img -O qcow2 /path/to.qcow2
+
+# sparse disk image
+virt-sparsify --in-place /path/to.qcow2
+
+# mount disk image as block device
+modpobe nbd max_part=8
+qemu-nbd -c /dev/nbd0 /path/to/image
+mount /dev/nbd0p1 /media
+
+# read logs of VM
+virt-log -d <domain> | less
+
+# edit file inside VM
+virt-edit -d <domain> /path/to/file
+
+# get list of os-variants
+osinfo-query os
+
+# attach qcow2-disk
+virsh attach-disk <VM-name> <partition.qcow2> sdb --cache none --persistent --subdriver qcow2
+
+# set disk ID to VM
+vm.conf:
+<serial>some-arbitrary-serial</serial>
+
+# check hw parameters for virtualization
+virt-host-validate
+
+# convert guest from another hypervisor to kvm
+# generates xml file for libvirt and so on
+# see more https://access.redhat.com/articles/1351963
+yum install virt-v2v

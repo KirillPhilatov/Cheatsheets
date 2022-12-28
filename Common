@@ -1,0 +1,304 @@
+MISC
+=========================
+# Rename file swaping spaces with underscores
+rename 's/ /_/g' *.mp3
+
+# Installation time of Linux machines
+sudo tune2fs -l /dev/sda1 | grep 'Filesystem created:'
+
+# Find process which opened file
+lsof path/to/file
+
+# Find all opened files of user
+lsof +u <username>
+
+# Wait for appearance of file in /tmp
+inotifywait -e close_write -r /tmp -m
+
+# show current driver for pci device
+lspci -k
+
+# print current runlevel
+who -r, --runlevel
+# print boot time
+who -b
+=========================
+# add readline library to program
+rlwrap sqlplus / as sysdba
+
+# top mem usage processes
+ps axo rss,comm,pid \
+| awk '{ proc_list[$2]++; proc_list[$2 "," 1] += $1; } \
+END { for (proc in proc_list) { printf("%d\t%s\n", \
+proc_list[proc "," 1],proc); }}' | sort -n | tail -n 10 | sort -rn \
+| awk '{$1/=1024;printf "%.0fMB\t",$1}{print $2}'
+
+# Get audio track from video file
+ffmpeg -i <input_file> -q:a 0 -map a <output_file>.mp3
+
+# Record your screen
+# see also: https://github.com/cytopia/ffscreencast
+# -i :0.0 means $DISPLAY and + means offset
+# video_size defines area
+# e.g. if you have 2 full HD monitors you can do:
+# -video_size 1920x1080 -i $DISPLAY+1920
+# to record only second monitor
+ffmpeg -y -video_size <size> -framerate 25 -f x11grab -r 25 -i :0.0+<offset> <output.mp4>
+# or just use
+simplescreenrecorder
+
+# Hugo tutorial
+# https://cloudcannon.com/community/learn/hugo-tutorial
+
+# console dictionary
+# https://sourceforge.net/projects/xdxf/files/dicts-stardict-form-xdxf/002c/stardict-comn_sdict05_eng_rus_full-2.4.2.tar.bz2/download
+sdcv # uses stardict (https://ru.wikipedia.org/wiki/StarDict)
+
+# simulate shitty network
+# packet loss and so on
+# https://github.com/tylertreat/comcast
+
+# socat examples
+# http://www.dest-unreach.org/socat/doc/socat.html#EXAMPLES
+=========================
+# useradd with password (insecure)
+perl -e 'print crypt($ARGV[0], "password"),"\n"' <pass>
+=========================
+# check cmd is in $PATH
+hash cmd
+=========================
+# convert Outlook format messages
+cpan -i Email::Outlook::Message
+msgconvert file.msg
+=========================
+# Format text by columns
+fmt -60 # cut output to 60 chars in columns
+=========================
+=========================
+# SMART on DELL RAID
+smartctl -a -d megaraid,0 /dev/sda
+=========================
+# Copy partition structure from one disk to another
+sfdisk -d /dev/sda | sfdisk /dev/sdb
+
+# reread disk size info after increasing (e.g. vm settings)
+echo 1 > /sys/class/block/sda/device/rescan
+
+# reread partition table (e.g. after changing)
+udevadm settle # ~ partrpobe
+
+# list filesystems
+lsblk --fs
+=========================
+# Get BIOS name of WIN machine
+nbtscan <ip>
+=========================
+FIND
+# tutorial
+https://www.grymoire.com/Unix/Find.html
+# Delete files and dirs with find without root dir
+find /path/to/dir -mindepth 1 -exec rm -rf {} \;
+# exclude directory using find
+find -not -path "/path/to/dir/*"
+# find files that newer than file
+find ./ -newer <file>
+=========================
+SAMBA
+# mount samba resource without password
+mount -t cifs //<IP>/<dir> /media -o password=""
+=========================
+MDADM
+# create array
+mdadm --create --verbose /dev/md1 --level=1 --raid-devices=2 /dev/sda3 /dev/sdb3
+=========================
+LVM
+# create physical volume
+pvcreate /dev/md1
+# create volume group
+vgcreate vg01 /dev/md1
+# create logical volume
+lvcreate -L150G -n lv01 vg01
+=========================
+OPENVPN
+# make ta.key
+openvpn --genkey --secret ta.key
+=========================
+ELASTIC STACK
+# list all indeces in elastic
+curl 'localhost:9200/_cat/indices?v'
+=========================
+CERTBOT
+# get help for subcommand
+certbot help <command>
+# issue cert via DNS-challenge
+certbot certonly --manual --preferred-challenges dns -d *.<domain> <domain>
+=========================
+ZABBIX
+# flush cache (60 seconds by default)
+zabbix_server -R config_cache_reload
+=========================
+DNS
+# Check BIND syntax of given zone
+named-checkzone <domain> /var/named/primary/<domain>
+
+# djbdns — DNS utils kit
+=========================
+OPENSSL
+# wiki
+https://wiki.openssl.org/index.php/Command_Line_Utilities
+# Full chain with certs
+openssl s_client -showcerts -connect <domain:port>
+# Options of openssl s_client
+man s_client
+=========================
+MAIL
+# parse postfix logs
+pflogsumm
+=========================
+NMAP
+# See supported crypto protocols
+nmap --script ssl-enum-ciphers -p <port> <host>
+=========================
+MTP (Android Device)
+# tutorial
+https://www.baeldung.com/linux/mounting-mtp-devices
+# load module
+modprobe fuse
+# list mtp devices
+jmtpfs -l
+# mount mtp device
+jmtpfs -o allow_other /mnt/
+# fstab record for user mounts
+jmtpfs /path/to/mtp fuse nodev,allow_other,rw,user,noauto,noatime,uid=1000,gid=1000    0    0
+=========================
+SCANNING
+
+# Common article
+https://wiki.archlinux.org/title/SANE
+# Universal driver
+https://github.com/alexpevzner/sane-airscan#compatibility
+# Frontend program
+simple-scan
+=========================
+LDAP
+
+# x389
+dsctl status instance # for instance name see /etc/dirsrv/
+
+# Freeipa
+ipa user-status # user log
+ipa user-add
+=========================
+NETWORK-MANAGER
+
+# overview
+https://www.redhat.com/sysadmin/becoming-friends-networkmanager
+# nmcli docs
+https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide/sec-configuring_ip_networking_with_nmcli
+# see current settings
+nmcli
+# list managed devices
+nmcli device status
+# see connections settings
+nmcli connection show
+# see detailed settings of given connection
+nmcli -p connection show enp1s0 # -p for pretty printing
+# edit setting
+nmcli con modify enp1s0 ipv4.addresses "192.168.0.1/24"
+
+# make NetworkManager not to touch resolv.conf
+# https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_and_managing_networking/manually-configuring-the-etc-resolv-conf-file_configuring-and-managing-networking
+#/etc/NetworkManager/conf.d/90-dns-none.conf
+# [main]
+# dns=none
+
+# See current configuration
+NetworkManager --print-config
+=========================
+SSH
+
+# get finger-print of machine
+ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key
+
+# sshfs
+
+# isolate ssh client to one command
+# .ssh/autorized_keys
+# <command> ssh-rsa...
+
+# to connect from fresh ssh-client to old ssh-server
+ssh -oHostKeyAlgorithms=+ssh-dss
+
+# execute this commands when connect over ssh
+~/.ssh/rc
+=========================
+SQL
+
+#sqlite sandbox
+https://sqlime.org/
+
+# query plan in sqlite
+explain query plan select * from ...
+
+# book about indeces
+https://use-the-index-luke.com
+=========================
+BASH
+
+# enable debugging and verbosity
+bash -x <script.sh> # set -x
+bash -v <script.sh> # set -v
+
+# Bash prompt HOWTO
+https://tldp.org/HOWTO/Bash-Prompt-HOWTO/index.html
+https://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html # colours
+=========================
+SYSTEMD
+
+# get root shell on TTY9
+systemctl start debug-shell
+
+# logs since last boot
+journalctl -b
+
+# error logs of previous boot
+# make journal storage persistent in
+# /etc/systemd/journald.conf
+journalctl -b -1 -p err
+
+# emergency mode
+systemd.unit=emergency.target # ~ single mode
+
+# switch to another target immediatly
+systemctl isolate multi-user.target
+
+# permit systemd services for users
+loginctl enable-linger
+
+# start service as common user
+# unit file in ~/.config/systemd
+systemctl --user start myservice # works only with direct connection (no su or sudo)
+
+# Netplan - unified network abstaction
+# Works with NetworkManager and systemd-networkd
+# Configures via /etc/netplan/*.yaml
+# https://netplan.io/
+netplan try # try configuration and restore if something went wrong
+netplan apply # apply current config
+netplan generate # generate config
+=========================
+MAKE
+
+# links
+# https://antonz.ru/makefile/
+# https://makefiletutorial.com/
+# https://swcarpentry.github.io/make-novice/reference.html
+# https://www.grymoire.com/Unix/Make.html
+=========================
+NETFILTER
+
+# Manipulate sets of ip with iptables
+# https://wiki.archlinux.org/title/Ipset
+ipset create myset hash:net
+ipset add myset 14.144.0.0/12
+iptables -I INPUT -m set --match-set myset src -j DROP

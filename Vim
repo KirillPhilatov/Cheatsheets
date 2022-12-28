@@ -1,0 +1,2 @@
+# Cancel undo (redo)
+C-R in normal mode

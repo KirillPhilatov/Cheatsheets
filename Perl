@@ -1,0 +1,93 @@
+# LINKS
+https://qntm.org/perl_en # Perl in 2:30
+http://modernperlbooks.com/books/modern_perl_2016/index.html #  Modern Perl book
+https://www.tutorialspoint.com/perl/index.htm # tutorial
+
+https://stackoverflow.com/questions/161872/hidden-features-of-perl # hacks
+https://habr.com/ru/post/87272/ # non trivial usage of flip flop operator ..
+https://www.perl.com/article/bang-bang/ # Shabang tricks
+https://www.perl.com/article/24/2013/5/11/Perl-tokens-you-should-know/ # perl tokens
+https://renotes.ru/post-392/perl-telegram-bot # telegram bot in perl
+https://catonmat.net/perl-one-liners-explained-part-one # one liners
+https://search.perlhacks.com/ # search for perl limited to good resources
+https://blog.geekuni.com/ # blog about perl training mostly
+https://habr.com/ru/post/154613/ # cheatsheet
+https://learnbyexample.gitbooks.io/command-line-text-processing/content/perl_the_swiss_knife.html # many one-liners
+http://perl-tutorial.org/ # different tutorials
+http://mech.math.msu.su/~shvetz/54/inf/perl-examples/
+https://www.perl.com/article/fork-yeah-/ # concurrency
+========================
+
+# Get address of scalar, array and so on
+$ref = \$var;
+$ref = \@arr;
+
+# Anonymous array
+
+$ref = [1, 2, 3]; # $ref is a pointer to array
+
+# See documentation
+perldoc -f <func_name>
+perldoc -f -X # see list of file checking flags (readable, executable and so on)
+perldoc perlreftut # references
+perldoc perldsc # composit data structs (arrays of hashes and so on)
+perldoc perlcheat # cheatsheet
+perldoc perlstyle # style guide
+perldoc perlsec # how to wirte secure programs
+perldoc Test::Simple # Intro to testing
+
+# Debugger
+perldoc perldebtut # tutorial
+perl -d <script.pl> # run script under debugger
+b <line_num> # make breakpoint
+L # show all breakpoints
+c # go to next breakpoint
+c <line_num> # go to next line
+v # show code near current point
+. # go to current position
+p <$var> # show value of $var
+x \%hash # show hash in readable way
+l <sub> # see content of sub
+h <command> # help for instruction, e.g. h b, h L, h man, h h
+R # start again from begininng
+
+# convert string
+uc(string) # to upper case
+lc(string) # to lower case
+
+# in place editing
+$^I = "~" # the same as perl -i.~
+
+# lock file to prevent simultanious writing
+open F, "<my_file>"
+flock F, 1 # 1 - shared lock, 2 - exclusive
+
+# field separator for flip flop operator or any multiple values
+$, = "," # perl -le '$, = ","; print ("a".."z")'
+
+# change array separator (space by default)
+$" = ","
+
+# Split string into characters
+split //, "hello, world"
+
+# reverse string
+print scalar reverse "string" # reverse = reverse list
+
+# get last index of array
+$#array
+
+# split by "|"
+split "\\|" # splt "|" splits every symbol
+
+# simulate user input (like Expect)
+open $fh, "|-", "read var"
+print $fh "test"
+close $fh
+echo $var # => test
+
+# sophisticated command line args parsing
+use Getopt::Long
+
+# search cpan module by mask
+cpan -x <module_name> # Needs additional module like Text::Levenstein

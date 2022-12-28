@@ -1,0 +1,59 @@
+ANSIBLE
+=========================
+# Ansible on localhost
+ansible-playbook -i 'localhost,' play.yml -c local
+
+# List hosts
+ansible -i <inventory> all --list-hosts
+
+# List playbook tasks before running
+ansible-playbook site.yml --list-tasks
+
+# List inner representation of hosts and vars
+ansible-inventory -i <inventory file> --list
+
+# Step by step execution
+ansible-playbok <playbook> --step
+
+# See documentation for module
+ansible-doc <module name> e.g. ansible-doc file
+
+# See tags
+ansible-playbook <playbook> --list-tags
+
+# Skip tags
+ansible-playbook <playbook> --skip-tags <tags>
+
+# Get facts from hosts
+ansible <host> -i inventory -m setup
+
+# Get value from users input
+name: pass # use {{ pass }} later
+prompt: Enter password
+
+# Install community modules
+ansible-galaxy collection install community.general
+
+# List collections and its location
+ansible-galaxy collection list
+
+# Create role template
+ansible-galaxy role init <role_name>
+
+# Dry-run mode
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_checkmode.html
+ansible-playbook play.yml --check
+
+# List common mistakes
+ansible-lint -L
+
+# Add to ansible.cfg for profiling
+# on modern ansible you need
+# ansible-galaxy collection install ansible.posix
+# and name callbacks accordingly
+callbacks_enabled = timer, profile_tasks, profile_roles
+
+
+# Speed up
+# https://habr.com/ru/company/redhatrussia/blog/650679/
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_strategies.html
