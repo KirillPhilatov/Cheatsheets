@@ -42,12 +42,9 @@ Use the ↑ key to increase the volume and obtain a value of 0 dB gain. The gain
 # Test sound
 $ speaker-test -c 2
 
-# MISC
-
-mkpasswd # get password hash for /etc/shadow
-
-Prevent udhpc from rewriting /etc/resolv.conf:
-in /usr/share/udhcpc/default.script
+#Prevent udhpc from rewriting /etc/resolv.conf:
+#in /usr/share/udhcpc/default.script
+#or in /etc/udhcpc/udhcpc.conf
 RESOLV_CONF="NO"
 
 # Config files for daemons
@@ -57,7 +54,7 @@ RESOLV_CONF="NO"
 apk add perl-utils
 
 # Prevent overwriting resolv.conf
-RESOLV_CONF=no # in /etc/udhcpc/udhcpc.conf
+RESOLV_CONF=no # 
 
 # Generate answers file for setup-alpine
 setup-alpine -c answers.txt

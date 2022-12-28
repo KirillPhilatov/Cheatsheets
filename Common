@@ -18,6 +18,9 @@ inotifywait -e close_write -r /tmp -m
 # show current driver for pci device
 lspci -k
 
+# get password hash for /etc/shadow
+mkpasswd
+
 # print current runlevel
 who -r, --runlevel
 # print boot time
