@@ -57,6 +57,8 @@ semanage -a -t http_port_t -p tcp 8080
 # troubleshooting
 sealert -l <id> # get id from logs
 
+# create policy analyzing audit logs
+audit2allow
 =========================
 
 # validate kickstart.cfg file

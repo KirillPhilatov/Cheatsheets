@@ -31,3 +31,31 @@ extra_hosts:
 
 # Docker networks
 # https://habr.com/ru/post/334004/
+
+# Drop some of capabilities
+# See man 7 capabilities
+docker run --cap-drop <CAP>
+
+# Give container host's processes information
+docker run --pid=host
+
+# Restrcit container CPU usage to certain CPU
+docker run --cpuset-cpus=0,1
+
+# Logging to host's syslog from container
+docker run --log-driver=syslog
+
+# Relative CPU usage
+docker run -c 100 <container_name>
+
+# Restrict to certain memory usage
+docker run -m 100M <container_name>
+
+# See changes inside container
+docker diff <container_name>
+
+# See namespace of container
+lsns -p <container pid> # get pid from docker inspect
+
+# Get into container namespace
+nsenter -t <container_pid> --net <comamnd to run>

@@ -3,6 +3,9 @@ MISC
 # Rename file swaping spaces with underscores
 rename 's/ /_/g' *.mp3
 
+# Whole word matching (do not match if it is part of word)
+grep -w <word>
+
 # Installation time of Linux machines
 sudo tune2fs -l /dev/sda1 | grep 'Filesystem created:'
 

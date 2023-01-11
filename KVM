@@ -25,6 +25,7 @@ virt-edit -d <domain> /path/to/file
 
 # get list of os-variants
 osinfo-query os
+virt-install --osinfo list
 
 # attach qcow2-disk
 virsh attach-disk <VM-name> <partition.qcow2> sdb --cache none --persistent --subdriver qcow2
