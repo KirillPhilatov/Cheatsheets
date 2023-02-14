@@ -33,7 +33,8 @@ extra_hosts:
 # https://habr.com/ru/post/334004/
 
 # Drop some of capabilities
-# See man 7 capabilities
+# See man 7 capabilities and
+# https://wiki.archlinux.org/title/capabilities
 docker run --cap-drop <CAP>
 
 # Give container host's processes information

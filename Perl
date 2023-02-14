@@ -50,6 +50,9 @@ x \%hash # show hash in readable way
 l <sub> # see content of sub
 h <command> # help for instruction, e.g. h b, h L, h man, h h
 R # start again from begininng
+# see also
+# https://metacpan.org/pod/Devel::Peek
+# module which shows inner representation of perl data structs
 
 # convert string
 uc(string) # to upper case

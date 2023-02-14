@@ -18,6 +18,10 @@ lsof +u <username>
 # Wait for appearance of file in /tmp
 inotifywait -e close_write -r /tmp -m
 
+# Freeze and unfreeze filesystem
+fsfreeze -f <mountpoint>
+fsfreeze -u <mountpoint>
+
 # show current driver for pci device
 lspci -k
 
@@ -53,6 +57,9 @@ ffmpeg -y -video_size <size> -framerate 25 -f x11grab -r 25 -i :0.0+<offset> <ou
 # or just use
 simplescreenrecorder
 
+# Image editing
+inkscape
+
 # Hugo tutorial
 # https://cloudcannon.com/community/learn/hugo-tutorial
 
@@ -66,6 +73,7 @@ sdcv # uses stardict (https://ru.wikipedia.org/wiki/StarDict)
 
 # socat examples
 # http://www.dest-unreach.org/socat/doc/socat.html#EXAMPLES
+socat -u TCP4-LISTEN:3334,reuseaddr,fork OPEN:/tmp/test.log,creat,append
 =========================
 # useradd with password (insecure)
 perl -e 'print crypt($ARGV[0], "password"),"\n"' <pass>
@@ -116,6 +124,8 @@ mount -t cifs //<IP>/<dir> /media -o password=""
 MDADM
 # create array
 mdadm --create --verbose /dev/md1 --level=1 --raid-devices=2 /dev/sda3 /dev/sdb3
+# re-create RAID (on another machine for instance)
+mdadm --assemble --scan
 =========================
 LVM
 # create physical volume
@@ -128,6 +138,9 @@ lvcreate -L150G -n lv01 vg01
 OPENVPN
 # make ta.key
 openvpn --genkey --secret ta.key
+
+WIREGUARD
+wg syncconf wg0 <(wg-quick strip wg0)
 =========================
 ELASTIC STACK
 # list all indeces in elastic
@@ -148,6 +161,16 @@ DNS
 named-checkzone <domain> /var/named/primary/<domain>
 
 # djbdns — DNS utils kit
+
+# NSD docs
+# https://nsd.docs.nlnetlabs.nl/en/latest/
+
+# Do not publish theese names
+# www.ietf.org/proceedings/52/I-D/draft-ietf-dnsop-dontpublish-unreachable-01.txt
+
+# Give different answers for domain to different sources
+# https://en.wikipedia.org/wiki/Split-horizon_DNS
+# https://www.rfc-editor.org/rfc/rfc6950.html#page-21
 =========================
 OPENSSL
 # wiki
@@ -237,6 +260,9 @@ ssh -oHostKeyAlgorithms=+ssh-dss
 
 # execute this commands when connect over ssh
 ~/.ssh/rc
+
+# Connect to server through another server
+ssh -J <s1> <s2>
 =========================
 SQL
 
@@ -300,6 +326,11 @@ MAKE
 # https://makefiletutorial.com/
 # https://swcarpentry.github.io/make-novice/reference.html
 # https://www.grymoire.com/Unix/Make.html
+
+# dry-run
+make -n <target>
+# ignore errors
+make -k
 =========================
 NETFILTER
 
@@ -308,3 +339,6 @@ NETFILTER
 ipset create myset hash:net
 ipset add myset 14.144.0.0/12
 iptables -I INPUT -m set --match-set myset src -j DROP
+
+=========================
+ZFS

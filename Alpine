@@ -64,3 +64,6 @@ setup-disk -L /dev/sda
 
 # See services and its statuses
 rc-status
+
+# Install Alpine on ZFS
+https://openzfs.github.io/openzfs-docs/Getting%20Started/Alpine%20Linux/index.html
