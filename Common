@@ -152,10 +152,6 @@ certbot help <command>
 # issue cert via DNS-challenge
 certbot certonly --manual --preferred-challenges dns -d *.<domain> <domain>
 =========================
-ZABBIX
-# flush cache (60 seconds by default)
-zabbix_server -R config_cache_reload
-=========================
 DNS
 # Check BIND syntax of given zone
 named-checkzone <domain> /var/named/primary/<domain>
@@ -183,6 +179,10 @@ man s_client
 MAIL
 # parse postfix logs
 pflogsumm
+# remove all emails of user
+doveadm -Dv expunge -u USERNAME@domain.suffix mailbox INBOX ALL
+# remove all emails older than 5 weeks
+doveadm -Dv expunge -u USERNAME@domain.suffix mailbox Junk BEFORE 5w
 =========================
 NMAP
 # See supported crypto protocols
@@ -341,4 +341,11 @@ ipset add myset 14.144.0.0/12
 iptables -I INPUT -m set --match-set myset src -j DROP
 
 =========================
-ZFS
+RSYSLOG
+
+# discard messages this certain content
+:msg, contains, "<message>" stop
+# discard messages from program with <name>
+:programname, isequal, "<name>" stop
+# discard messages from certain syslog server
+:fromhost-ip, isequal, "<IP>" stop
