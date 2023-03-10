@@ -1,0 +1,20 @@
+ZABBIX
+
+# Flush cache (60 seconds by default)
+zabbix_server -R config_cache_reload
+
+# Change log level on fly
+zabbix_server -R log_level_increase=4
+
+# Check uniqness of TLSPSKIdentity
+failed to accept an incoming connection: from IP: TLS handshake set result code to 1: file ssl/statem/extensions.c
+error:141FA0FD:SSL routines:tls_psk_do_binder:binder does not verify: TLS write fatal alert "illegal parameter".
+=========================
+
+GRAFANA
+
+# Documentation
+# https://grafana.com/docs/grafana/latest
+
+# Install plugin
+grafana-cli plugins install <plugin-id>
