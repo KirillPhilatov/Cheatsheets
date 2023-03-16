@@ -53,6 +53,8 @@ ansible-lint -L
 # and name callbacks accordingly
 callbacks_enabled = timer, profile_tasks, profile_roles
 
+# Exit play
+ansible.builtin.meta: end_play
 
 # Speed up
 # https://habr.com/ru/company/redhatrussia/blog/650679/
