@@ -1,0 +1,28 @@
+Growing disk
+------------
+
+# List disks
+geom disk list
+
+# Show info
+gpart show
+
+# Check status
+gpart status
+
+# Recover if corrupted
+gpart recover <disk>
+
+# Enlarge partition
+gpart resize -i <part_num> <disk>
+
+# Growfs
+growfs <mount_point>
+
+
+# Listening ports
+sockstat -4 -l
+
+# Edit rc.conf safely
+sysrc nginx_enable="YES"
+
