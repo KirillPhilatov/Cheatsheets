@@ -59,3 +59,6 @@ ansible.builtin.meta: end_play
 # Speed up
 # https://habr.com/ru/company/redhatrussia/blog/650679/
 # https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_strategies.html
+
+# Never and always tags
+https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_tags.html#special-tags-always-and-never

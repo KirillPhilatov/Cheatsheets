@@ -12,6 +12,8 @@ apk -vv info | sort # find all installed packages
 
 apk info -L <package> # list content of package
 
+apk add docs # install docs for all packages
+
 # SOUND
 
 1. apk add alsa-utils alsa-utils-doc alsa-lib alsaconf alsa-ucm-conf

@@ -318,6 +318,15 @@ systemctl --user start myservice # works only with direct connection (no su or s
 netplan try # try configuration and restore if something went wrong
 netplan apply # apply current config
 netplan generate # generate config
+
+# Get boot time
+systemd-analyze
+
+# What service slows booting proccess
+systemd-analyze critical-chain
+
+# Range boot time services from slowest to fastest
+systemd-analyze blame
 =========================
 MAKE
 

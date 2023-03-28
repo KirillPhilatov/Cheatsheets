@@ -8,3 +8,6 @@ smtpctl show queue # to get msg id
 mg -n /var/spool/smtpd/queue/<msg_id>
 rcctl start smtpd
 smtpctl schedule <msg_id>
+
+# wget
+ftp
