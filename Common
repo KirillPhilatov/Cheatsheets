@@ -78,9 +78,6 @@ socat -u TCP4-LISTEN:3334,reuseaddr,fork OPEN:/tmp/test.log,creat,append
 # useradd with password (insecure)
 perl -e 'print crypt($ARGV[0], "password"),"\n"' <pass>
 =========================
-# check cmd is in $PATH
-hash cmd
-=========================
 # convert Outlook format messages
 cpan -i Email::Outlook::Message
 msgconvert file.msg
@@ -261,7 +258,7 @@ ssh -oHostKeyAlgorithms=+ssh-dss
 # execute this commands when connect over ssh
 ~/.ssh/rc
 
-# Connect to server through another server
+# connect to server through another server
 ssh -J <s1> <s2>
 =========================
 SQL
@@ -275,15 +272,21 @@ explain query plan select * from ...
 # book about indeces
 https://use-the-index-luke.com
 =========================
-BASH
+SHELL
 
 # enable debugging and verbosity
 bash -x <script.sh> # set -x
 bash -v <script.sh> # set -v
 
-# Bash prompt HOWTO
+# bash prompt HOWTO
 https://tldp.org/HOWTO/Bash-Prompt-HOWTO/index.html
 https://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html # colours
+
+# man for builtin commands
+help <command> # e.g. help trap; help help
+
+# check cmd is in $PATH
+hash <cmd> # shell builtin
 =========================
 SYSTEMD
 
