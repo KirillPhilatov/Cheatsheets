@@ -32,6 +32,15 @@ mkpasswd
 who -r, --runlevel
 # print boot time
 who -b
+
+# Low and high memory usage
+free -l
+
+# Make vmstat readable
+vmstat -SM
+
+# Disable OOM killer
+sysctl -w vm.oom-kill = 0
 =========================
 # add readline library to program
 rlwrap sqlplus / as sysdba
@@ -184,6 +193,9 @@ doveadm -Dv expunge -u USERNAME@domain.suffix mailbox Junk BEFORE 5w
 NMAP
 # See supported crypto protocols
 nmap --script ssl-enum-ciphers -p <port> <host>
+
+# Cheatsheet
+https://www.stationx.net/nmap-cheat-sheet/
 =========================
 MTP (Android Device)
 # tutorial

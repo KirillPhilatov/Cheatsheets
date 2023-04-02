@@ -3,6 +3,7 @@ https://qntm.org/perl_en # Perl in 2:30
 http://modernperlbooks.com/books/modern_perl_2016/index.html #  Modern Perl book
 https://www.tutorialspoint.com/perl/index.htm # tutorial
 
+http://www.stonehenge.com/merlyn/UnixReview/ # Randal Schwartz articles
 https://stackoverflow.com/questions/161872/hidden-features-of-perl # hacks
 https://habr.com/ru/post/87272/ # non trivial usage of flip flop operator ..
 https://www.perl.com/article/bang-bang/ # Shabang tricks
@@ -16,6 +17,7 @@ https://learnbyexample.gitbooks.io/command-line-text-processing/content/perl_the
 http://perl-tutorial.org/ # different tutorials
 http://mech.math.msu.su/~shvetz/54/inf/perl-examples/
 https://www.perl.com/article/fork-yeah-/ # concurrency
+https://alvinalexander.com/perl/ # different articles
 ========================
 
 # Get address of scalar, array and so on
@@ -94,3 +96,7 @@ use Getopt::Long
 
 # search cpan module by mask
 cpan -x <module_name> # Needs additional module like Text::Levenstein
+
+# list installed modules
+instmodsh
+cpan -l
