@@ -1,0 +1,24 @@
+# attach volume to instance
+openstack server add volume <instance> <volume>
+
+# list server ports
+openstack port list --server <server_id>
+
+# using config-drive
+openstack server create --config-drive true --user-data ./my-user-data.txt --file /tmp/test=test-file
+
+# config-drive path on VM
+/dev/disk/by-label/config-2
+
+# list rules in security group
+openstack security group rule list <sec_group>
+
+# get auth token
+openstack token issue
+token=$(openstack token issue -c id -f value)
+
+# remove security group from port
+openstack port unset --security-group <SECURITY GROUP> <PORT>
+
+# remove all security groups from port
+openstack port set --no-security-group <PORT> 
