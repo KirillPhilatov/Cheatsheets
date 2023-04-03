@@ -1,0 +1,2 @@
+# Get direct access to pods through kubernetes API
+kubectl proxy
