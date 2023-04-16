@@ -299,7 +299,20 @@ help <command> # e.g. help trap; help help
 
 # check cmd is in $PATH
 hash <cmd> # shell builtin
-=========================
+
+# case
+case expression in 
+  pattern-1)
+    statement 
+    ;;
+  pattern-2) 
+    statement
+    ;;
+  *) 
+    statement 
+    ;; 
+esac
+======================
 SYSTEMD
 
 # get root shell on TTY9
