@@ -14,36 +14,6 @@ apk info -L <package> # list content of package
 
 apk add docs # install docs for all packages
 
-# SOUND
-
-1. apk add alsa-utils alsa-utils-doc alsa-lib alsaconf alsa-ucm-conf
-2. rc-service alsa start
-3. rc-update add alsa
-
-https://wiki.archlinux.org/title/Advanced_Linux_Sound_Architecture#ALSA_firmware
-
-By default ALSA has all channels muted. Those have to be unmuted manually.
-
-Unmute with amixer
-Unmuting the sound card's master volume can be done by using amixer:
-
-$ amixer sset Master unmute
-$ amixer sset Speaker unmute
-$ amixer sset Headphone unmute
-
-Unmute with alsamixer
-Unmuting the sound card can be done using alsamixer:
-
-$ alsamixer
-The MM label below a channel indicates that the channel is muted, and OO indicates that it is open.
-
-Scroll to the Master and PCM channels with the ← and → keys and unmute them by pressing the m key.
-
-Use the ↑ key to increase the volume and obtain a value of 0 dB gain. The gain can be found in the upper left next to the Item: field.
-
-# Test sound
-$ speaker-test -c 2
-
 #Prevent udhpc from rewriting /etc/resolv.conf:
 #in /usr/share/udhcpc/default.script
 #or in /etc/udhcpc/udhcpc.conf
