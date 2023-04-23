@@ -22,3 +22,18 @@ openstack port unset --security-group <SECURITY GROUP> <PORT>
 
 # remove all security groups from port
 openstack port set --no-security-group <PORT> 
+
+# block port
+openstack port set --disable <port>
+
+# create port
+openstack port create --network <net_id>
+
+# show quotas and resources in use
+openstack quota show --usage --compute <project>
+
+# list types of volumes
+openstack volume type list
+
+# make vip
+openstack project set --tag vip <project>
