@@ -41,6 +41,9 @@ vmstat -SM
 
 # Disable OOM killer
 sysctl -w vm.oom-kill = 0
+
+# Python3 http server
+python3 -m http.Server
 =========================
 # add readline library to program
 rlwrap sqlplus / as sysdba
@@ -272,6 +275,11 @@ ssh -oHostKeyAlgorithms=+ssh-dss
 
 # connect to server through another server
 ssh -J <s1> <s2>
+
+# generate public key from private
+# can be used to check passphrase existance
+ssh-keygen -yf ~/.ssh/id_rsa
+
 =========================
 SQL
 
@@ -312,6 +320,9 @@ case expression in
     statement 
     ;; 
 esac
+
+# bash shortcuts
+https://www.linux.org/threads/popular-keyboard-shortcuts-for-the-gnu-bash-shell.44645/
 ======================
 SYSTEMD
 

@@ -26,3 +26,18 @@ sockstat -4 -l
 # Edit rc.conf safely
 sysrc nginx_enable="YES"
 
+Packages
+--------
+
+# List installed packages
+pkg info
+pkg info -l <package> # list files in pkg
+
+# Statistics
+pkg stats
+
+Services
+--------
+
+# List enabled services
+service -e

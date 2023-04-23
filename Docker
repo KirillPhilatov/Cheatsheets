@@ -60,3 +60,8 @@ lsns -p <container pid> # get pid from docker inspect
 
 # Get into container namespace
 nsenter -t <container_pid> --net <comamnd to run>
+
+# Use existing network in docker-compose
+networks:
+  existing_net:
+    external: true
