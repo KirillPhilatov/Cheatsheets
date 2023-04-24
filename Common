@@ -199,6 +199,9 @@ nmap --script ssl-enum-ciphers -p <port> <host>
 
 # Cheatsheet
 https://www.stationx.net/nmap-cheat-sheet/
+
+# Ping scan (get list of live hosts)
+nmap -sn <ip_range> # use -sP in old nmap versions
 =========================
 MTP (Android Device)
 # tutorial
