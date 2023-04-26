@@ -37,3 +37,10 @@ openstack volume type list
 
 # make vip
 openstack project set --tag vip <project>
+
+# list hypervisors
+openstack hypervisor list # old openstack host list
+
+# live migration
+openstack server migrate --live-migration --host <hostname> --os-compute-api-version 2.30 <server>
+
