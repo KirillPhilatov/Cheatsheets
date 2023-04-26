@@ -41,3 +41,6 @@ virt-host-validate
 # generates xml file for libvirt and so on
 # see more https://access.redhat.com/articles/1351963
 yum install virt-v2v
+
+# Log in to console when another session to console open
+virsh console --force <vm_id>
