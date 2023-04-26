@@ -369,6 +369,9 @@ systemd-analyze critical-chain
 
 # Range boot time services from slowest to fastest
 systemd-analyze blame
+
+# Revert journalctl output order
+journalctl -r
 =========================
 MAKE
 
