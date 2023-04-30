@@ -1,2 +1,11 @@
 # Get direct access to pods through kubernetes API
 kubectl proxy
+
+# Get system pods (such as scheduler)
+kubectl get pods -n kube-system
+
+# Get all resources
+kubectl get all
+
+# Show labels
+kubectl get --show-labels
