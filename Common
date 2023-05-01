@@ -44,6 +44,9 @@ sysctl -w vm.oom-kill = 0
 
 # Python3 http server
 python3 -m http.Server
+
+# Convert html to pdf
+wkhtmltopdf <https://page.html> page.pdf
 =========================
 # add readline library to program
 rlwrap sqlplus / as sysdba
@@ -326,6 +329,12 @@ esac
 
 # bash shortcuts
 https://www.linux.org/threads/popular-keyboard-shortcuts-for-the-gnu-bash-shell.44645/
+
+# bash colors
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m'
+echo -e ${RED}red text{NC}
 ======================
 SYSTEMD
 
