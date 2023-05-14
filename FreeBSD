@@ -20,12 +20,6 @@ gpart resize -i <part_num> <disk>
 growfs <mount_point>
 
 
-# Listening ports
-sockstat -4 -l
-
-# Edit rc.conf safely
-sysrc nginx_enable="YES"
-
 Packages
 --------
 
@@ -41,3 +35,19 @@ Services
 
 # List enabled services
 service -e
+
+# Edit rc.conf safely
+sysrc nginx_enable="YES"
+
+Network
+-------
+
+# Restart network
+service netif restart
+
+# See routing tables
+netstat -r
+
+# Listening ports
+sockstat -4 -l
+

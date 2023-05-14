@@ -1,14 +1,17 @@
 # show table size
 SELECT pg_size_pretty (pg_relation_size('<table>'))
 
-# Utils from libpq-devel on some systems
+# utils from libpq-devel on some systems
 export PATH="$PATH:/usr/pgsql-<ver>/bin"
 
-# Tune settings with tsdb
+# tune settings with tsdb
 timescaledb-tune
 
-# Reread settings from postgres.conf
+# reread settings from postgres.conf
 pg_ctl reload
 
-# Find pid
+# find pid
 head -1 $PGDATA/postmaster.pid
+
+# be verbose
+vacuum (vebose) <table>

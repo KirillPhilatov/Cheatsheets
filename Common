@@ -381,6 +381,9 @@ systemd-analyze blame
 
 # Revert journalctl output order
 journalctl -r
+
+# See logs of process
+journactl _PID=<pid>
 =========================
 MAKE
 
