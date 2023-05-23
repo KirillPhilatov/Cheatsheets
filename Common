@@ -47,6 +47,9 @@ python3 -m http.Server
 
 # Convert html to pdf
 wkhtmltopdf <https://page.html> page.pdf
+
+# Find children of process
+ps --ppid <parent pid>
 =========================
 # add readline library to program
 rlwrap sqlplus / as sysdba
