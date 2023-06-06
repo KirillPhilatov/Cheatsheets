@@ -48,6 +48,9 @@ python3 -m http.Server
 # Convert html to pdf
 wkhtmltopdf <https://page.html> page.pdf
 
+# Convert doc to pdf
+lowriter --convert-to pdf <file>.doc
+
 # Find children of process
 ps --ppid <parent pid>
 
