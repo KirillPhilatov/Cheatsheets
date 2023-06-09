@@ -56,6 +56,9 @@ ps --ppid <parent pid>
 
 # See current kernel options
 grubby --info DEFAULT
+
+# Run command in parallel
+seq 1 200 | xargs -I $ -n1 -P10 <cmd>
 =========================
 # add readline library to program
 rlwrap sqlplus / as sysdba

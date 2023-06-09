@@ -12,7 +12,11 @@ apk -vv info | sort # find all installed packages
 
 apk info -L <package> # list content of package
 
+apk info -a <package> # all info about package including files listing
+
 apk add docs # install docs for all packages
+
+apk add build-base # install gcc make patch and few other building tools
 
 apk -sv fix # # show errors cause
 
