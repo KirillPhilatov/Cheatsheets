@@ -44,3 +44,7 @@ yum install virt-v2v
 
 # Log in to console when another session to console open
 virsh console --force <vm_id>
+
+# update osinfo database
+curl -O https://releases.pagure.org/libosinfo/osinfo-db-$VERSION.tar.xz
+osinfo-db-import --local osinfo-db-$VERSION.tar.xz
