@@ -264,6 +264,10 @@ nmcli connection show
 nmcli -p connection show enp1s0 # -p for pretty printing
 # edit setting
 nmcli con modify enp1s0 ipv4.addresses "192.168.0.1/24"
+#wi-fi
+nmcli radio wifi on
+nmcli device wifi list
+nmcli device wifi connect <ESSID> --ask
 
 # make NetworkManager not to touch resolv.conf
 # https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_and_managing_networking/manually-configuring-the-etc-resolv-conf-file_configuring-and-managing-networking

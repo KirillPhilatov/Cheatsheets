@@ -48,3 +48,6 @@ virsh console --force <vm_id>
 # update osinfo database
 curl -O https://releases.pagure.org/libosinfo/osinfo-db-$VERSION.tar.xz
 osinfo-db-import --local osinfo-db-$VERSION.tar.xz
+
+# get VM ip (qemu-guest-agent needed)
+virsh domifaddr <VM>
