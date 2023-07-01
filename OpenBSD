@@ -11,3 +11,6 @@ smtpctl schedule <msg_id>
 
 # wget
 ftp
+
+# restart network for certain interface
+sh /etc/network <ifname>

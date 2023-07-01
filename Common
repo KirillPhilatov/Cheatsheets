@@ -269,6 +269,12 @@ nmcli radio wifi on
 nmcli device wifi list
 nmcli device wifi connect <ESSID> --ask
 
+# wireguard
+# https://blogs.gnome.org/thaller/2019/03/15/wireguard-in-networkmanager/
+nmcli connection import type wireguard file /etc/wireguard/wg0.conf
+# result
+cat /etc/NetworkManager/system-connections/wg0.nmconnection
+
 # make NetworkManager not to touch resolv.conf
 # https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_and_managing_networking/manually-configuring-the-etc-resolv-conf-file_configuring-and-managing-networking
 #/etc/NetworkManager/conf.d/90-dns-none.conf
