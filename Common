@@ -357,6 +357,12 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m'
 echo -e ${RED}red text{NC}
+
+# don't get gateway via dhcp
+# /etc/dhcp/dhclient.conf
+interface "eth1" {
+  request subnet-mask, broadcast-address, interface-mtu;
+}
 ======================
 SYSTEMD
 

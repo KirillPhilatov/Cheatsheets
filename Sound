@@ -6,6 +6,8 @@
 # https://zalinux.ru/?p=5489 # snd_intel_hda driver
 # https://zalinux.ru/?p=4099 # microphone troubles
 # https://help.ubuntu.com/community/SoundTroubleshooting
+# https://askubuntu.com/questions/57810/how-to-fix-no-soundcards-found # Troubleshooting
+# https://www.kernel.org/doc/html/latest/sound/hd-audio/models.html
 
 1. apk add alsa-utils alsa-utils-doc alsa-lib alsaconf alsa-ucm-conf
 2. rc-service alsa start
@@ -41,3 +43,9 @@ cat /proc/asound/card*/codec* | grep Code
 # GUI tools for audio settings
 hdajackretask # if you use pure alsa
 pavucontrol # for pulseaudio
+
+# find out audio codec
+cat /proc/asound/card*/codec* | grep Codec
+
+# fix not defined mic on lenovo thinkbook
+echo "options snd-hda-intel model=dual-codecs" > /etc/modprobe.d/sound.conf
