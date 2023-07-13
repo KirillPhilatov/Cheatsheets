@@ -2,6 +2,7 @@
 # https://docs.alpinelinux.org/
 # user handbook
 # https://docs.alpinelinux.org/user-handbook/0.1a/index.html
+# musl vs glibc: https://lists.alpinelinux.org/~alpine/users/%3C6df8863e77b970b466dbfc9a3a5c2bcec3199f48.camel%40aquilenet.fr%3E
 
 # APK
 apk info --who-owns /sbin/lbu # find package name
