@@ -63,6 +63,13 @@ seq 1 200 | xargs -I $ -n1 -P10 <cmd>
 # Encrypt and decrypt file with symmetric algorithm
 gpg -c <file>
 gpg -d <file> > file.decrypted
+
+# Trust imported file
+gpg --edit-key <id>
+gpg>trust
+5
+y
+quit
 =========================
 # add readline library to program
 rlwrap sqlplus / as sysdba
@@ -447,3 +454,13 @@ RSYSLOG
 :programname, isequal, "<name>" stop
 # discard messages from certain syslog server
 :fromhost-ip, isequal, "<IP>" stop
+
+=========================
+ATOP
+
+# sort processes by memory consumption
+atop -m
+# disk operations
+atop -d
+# see processes start time
+atop -v
