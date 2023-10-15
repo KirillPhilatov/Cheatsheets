@@ -17,12 +17,6 @@ modpobe nbd max_part=8
 qemu-nbd -c /dev/nbd0 /path/to/image
 mount /dev/nbd0p1 /media
 
-# read logs of VM
-virt-log -d <domain> | less
-
-# edit file inside VM
-virt-edit -d <domain> /path/to/file
-
 # get list of os-variants
 osinfo-query os
 virt-install --osinfo list
@@ -51,3 +45,29 @@ osinfo-db-import --local osinfo-db-$VERSION.tar.xz
 
 # get VM ip (qemu-guest-agent needed)
 virsh domifaddr <VM>
+
+# Useful utilities from libguestfs-tools
+# Common flags
+# -d - domain
+# -a - disk
+
+# read logs of VM
+virt-log -d <domain> | less
+
+# edit file inside VM
+virt-edit -d <domain> /path/to/file
+
+# cat or tail file inside vm
+virt-cat -d <domain> file
+virt-tail -d <domain> file
+
+# get info about os
+virt-inspector -a <path/to/qcow>
+
+# mount vm image on host machine
+# --ro for read-only
+guestmount -a <path/to/qcow> /mount/point
+
+# prepare VM for cloning
+# remove SSH hosts file, arp table users and so on
+virt-sysprep -a <path/to/disk>
