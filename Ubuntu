@@ -13,6 +13,12 @@ dpkg --contents <pkg.deb>
 # Find package which provides file
 dpkg -S path/to/file
 
+# Download package without installation
+apt-get --download-only install <pkg>
+
+# List file inside not installed package
+apt-file list <pkg>
+
 # Hold package (prohibit upgrade)
 apt-mark hold <pkg-name>
 
