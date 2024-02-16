@@ -15,3 +15,6 @@ kubectl logs --tail=<num> <pod>
 
 # Changes number of replicas is RS, Deployment or StatefulSet
 kubectl scale replicas=<num> deployment/<name of deployment>
+
+# Get pods sorted by timestamp
+kubectl get po --sort-by=.status.startTime
