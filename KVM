@@ -46,6 +46,9 @@ osinfo-db-import --local osinfo-db-$VERSION.tar.xz
 # get VM ip (qemu-guest-agent needed)
 virsh domifaddr <VM>
 
+# get vm statistics (cpu usage and so on)
+virsh domstats <VM>
+
 # Useful utilities from libguestfs-tools
 # Common flags
 # -d - domain
