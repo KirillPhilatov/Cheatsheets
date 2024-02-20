@@ -70,6 +70,10 @@ gpg>trust
 5
 y
 quit
+
+# tcpping
+yum install tcptraceroute
+wget http://www.vdberg.org/~richard/tcpping -O /usr/local/bin/tcpping
 =========================
 # add readline library to program
 rlwrap sqlplus / as sysdba
