@@ -102,6 +102,9 @@ simplescreenrecorder
 # Image editing
 inkscape
 
+# Convert sevetal images to one multipage pdf (imagemagick is requierd)
+montage <filename>*.jpg -tile 1x1 -geometry 500 <filename.pdf>
+
 # Hugo tutorial
 # https://cloudcannon.com/community/learn/hugo-tutorial
 
