@@ -217,6 +217,8 @@ https://wiki.openssl.org/index.php/Command_Line_Utilities
 openssl s_client -showcerts -connect <domain:port>
 # Options of openssl s_client
 man s_client
+# Check via starttls
+openssl s_client -connect <host>:587 -starttls smtp
 =========================
 MAIL
 # parse postfix logs
