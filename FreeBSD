@@ -30,6 +30,10 @@ pkg info -l <package> # list files in pkg
 # Statistics
 pkg stats
 
+# Install documentation
+pkg install ru-freebsd-doc
+
+
 Services
 --------
 
@@ -38,6 +42,7 @@ service -e
 
 # Edit rc.conf safely
 sysrc nginx_enable="YES"
+
 
 Network
 -------
@@ -51,3 +56,30 @@ netstat -r
 # Listening ports
 sockstat -4 -l
 
+
+Desktop and laptop
+------------------
+
+# Get battery stat
+acpiconf -i 0
+
+# Suspend
+acpiconf -s 3
+echo "hw.acpi.lid_switch_state=S3" >> /etc/sysctl.conf #for suspend on lid close
+
+
+Shell
+-----
+
+# reread $PATH after installing pkgs
+rehash
+
+
+Misc
+----
+
+# find out cpu temp
+sysctl dev.cpu | grep temperature # or use hwstat
+
+# config util
+bsdconfig
