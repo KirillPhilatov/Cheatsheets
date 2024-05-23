@@ -2,6 +2,12 @@
 sysctl hw.disknames # for getting disk name
 dmesg | grep sd0 # or any other name from prev cmd
 
+# create partition and fs on new disk
+fdisk -i sd1
+disklabel -E sd1
+disklabel sd1
+newfs /dev/rsd1a
+
 # edit mail in queue
 rcctl stop smtpd
 smtpctl show queue # to get msg id
