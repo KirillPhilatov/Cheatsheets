@@ -83,3 +83,12 @@ sysctl dev.cpu | grep temperature # or use hwstat
 
 # config util
 bsdconfig
+
+# list storage devices
+camcontrol devlist
+
+# list pci devices
+pciconf -l
+
+# add user to group
+pw groupmod <group_name> -m <user>
