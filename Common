@@ -176,6 +176,12 @@ pvcreate /dev/md1
 vgcreate vg01 /dev/md1
 # create logical volume
 lvcreate -L150G -n lv01 vg01
+# get list of lvs or vgs options
+vgs|lvs -o help
+# display lvm layout
+lvs -o+lv_layout
+# json output
+vgs|lvs--reportformat json
 =========================
 OPENVPN
 # make ta.key
