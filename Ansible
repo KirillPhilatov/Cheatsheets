@@ -56,6 +56,9 @@ callbacks_enabled = timer, profile_tasks, profile_roles
 # Exit play
 ansible.builtin.meta: end_play
 
+# Show children of group in graph manner
+ansible-inventory -i <inventory> --graph <group>
+
 # Speed up
 # https://habr.com/ru/company/redhatrussia/blog/650679/
 # https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_strategies.html
