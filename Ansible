@@ -44,6 +44,9 @@ ansible-galaxy role init <role_name>
 # https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_checkmode.html
 ansible-playbook play.yml --check
 
+# Check yml syntax
+ansible-playbook --syntax-check <playbook.yml>
+
 # List common mistakes
 ansible-lint -L
 
@@ -65,3 +68,6 @@ ansible-inventory -i <inventory> --graph <group>
 
 # Never and always tags
 https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_tags.html#special-tags-always-and-never
+
+# About debugger
+https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_debugger.html
