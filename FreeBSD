@@ -33,6 +33,44 @@ pkg stats
 # Install documentation
 pkg install ru-freebsd-doc
 
+Ports
+-----
+
+# Search for port
+cd /usr/ports
+make search name=<port_name>
+
+# List dependencies need to be installed for this port
+make missing
+
+# Install dependencies with pkg
+make install-missing-packages
+
+# Show options
+make showconfig
+
+# Show dependencies
+make build-depends-list
+
+# Show what will be fetched
+make fetch-list
+
+# Show what will be installed
+cat pkg-plist
+
+# Show dependencies as graph
+porttree
+
+# Ports changelog
+/usr/ports/UPDATING
+
+# Makefiles collection
+/usr/ports/Mk
+
+# Switch to latest from quarter branch
+mkdir -p /usr/local/etc/pkg/repos
+echo "FreeBSD: { url: \"pkg+http://pkg.freebsd.org/\${ABI}/latest\" }" > /usr/local/etc/pkg/repos/FreeBSD.conf
+pkg upgrade -f
 
 Services
 --------
@@ -92,3 +130,6 @@ pciconf -l
 
 # add user to group
 pw groupmod <group_name> -m <user>
+
+# strace
+truss
