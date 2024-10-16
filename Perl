@@ -2,6 +2,7 @@
 https://qntm.org/perl_en # Perl in 2:30
 http://modernperlbooks.com/books/modern_perl_2016/index.html #  Modern Perl book
 https://www.tutorialspoint.com/perl/index.htm # tutorial
+https://mvp.kablamo.org/ # minimal viable perl
 
 http://www.stonehenge.com/merlyn/UnixReview/ # Randal Schwartz articles
 https://stackoverflow.com/questions/161872/hidden-features-of-perl # hacks
@@ -55,6 +56,8 @@ R # start again from begininng
 # see also
 # https://metacpan.org/pod/Devel::Peek
 # module which shows inner representation of perl data structs
+# get repl
+perl -de 1
 
 # convert string
 uc(string) # to upper case
