@@ -33,8 +33,17 @@ pkg stats
 # Install documentation
 pkg install ru-freebsd-doc
 
+# List only additionaly installed pkgs (like pkg_info -mz on obsd)
+pkg prime-list
+
+# Lock against update or removal
+pkg lock <pkg>
+
 Ports
 -----
+
+# SVN url
+https://svnweb.freebsd.org/ports
 
 # Search for port
 cd /usr/ports
@@ -71,6 +80,14 @@ porttree
 mkdir -p /usr/local/etc/pkg/repos
 echo "FreeBSD: { url: \"pkg+http://pkg.freebsd.org/\${ABI}/latest\" }" > /usr/local/etc/pkg/repos/FreeBSD.conf
 pkg upgrade -f
+
+# Update ports
+portsnap fetch
+portsnap extract
+portsnap update
+
+# Downgrade port
+pkg install portdowngrade
 
 Services
 --------
@@ -133,3 +150,14 @@ pw groupmod <group_name> -m <user>
 
 # strace
 truss
+
+Updates
+-------
+
+# Update within release
+freebsd-update fetch
+freebsd install
+
+# Upgrade to new release
+freebsd-update upgrade -r <release> # e.g. freebsd-update upgrade -r 14.1
+
