@@ -170,6 +170,8 @@ mdadm --create --verbose /dev/md1 --level=1 --raid-devices=2 /dev/sda3 /dev/sdb3
 mdadm --assemble --scan
 =========================
 LVM
+https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/8/html/configuring_and_managing_logical_volumes/troubleshooting-lvm_configuring-and-managing-logical-volumes#troubleshooting-lvm_configuring-and-managing-logical-volumes
+
 # create physical volume
 pvcreate /dev/md1
 # create volume group
@@ -479,3 +481,11 @@ atop -m
 atop -d
 # see processes start time
 atop -v
+=========================
+LUKS
+
+# mount encrypted volume
+cryptsetup luksOpen /dev/sda1 usb
+mount /dev/mapper/usb /media
+umount /media
+cryptsetup luksClose usb

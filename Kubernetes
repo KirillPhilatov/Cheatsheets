@@ -21,3 +21,6 @@ kubectl get po --sort-by=.status.startTime
 
 # List nodes with taints
 kubectl get nodes -o custom-columns=NAME:.metadata.name,TAINTS:.spec.taints --no-headers 
+
+# List available resources (and get abbreviations for them)
+kubectl api-resources
