@@ -27,6 +27,9 @@ Packages
 pkg info
 pkg info -l <package> # list files in pkg
 
+# Get pkg size
+pkg info --size <package>
+
 # Statistics
 pkg stats
 
@@ -161,3 +164,5 @@ freebsd install
 # Upgrade to new release
 freebsd-update upgrade -r <release> # e.g. freebsd-update upgrade -r 14.1
 
+# Upgrade packages
+pkg-static upgrade -f
