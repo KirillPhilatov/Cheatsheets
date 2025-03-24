@@ -336,6 +336,8 @@ ssh -J <s1> <s2>
 # can be used to check passphrase existance
 ssh-keygen -yf ~/.ssh/id_rsa
 
+# Dump current settings
+sshd -T
 =========================
 SQL
 

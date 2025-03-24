@@ -71,3 +71,6 @@ https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_tags.html#speci
 
 # About debugger
 https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_debugger.html
+
+# Get current config
+ansible-config dump

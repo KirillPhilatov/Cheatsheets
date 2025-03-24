@@ -1,2 +1,5 @@
 # Cancel undo (redo)
 C-R in normal mode
+
+# Copy to clipboard
+SHIFT +
