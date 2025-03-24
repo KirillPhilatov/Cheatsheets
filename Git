@@ -1,0 +1,30 @@
+# See diff of staged files
+git diff --cached
+
+# Rename current branch
+git branch -m <newname>
+
+# Add name/message to git stash
+git stash push -m "message" # since 2.16
+git stash save "message"
+
+# Get diff with stashed changes
+git stash show -p
+
+# Log formats
+https://git-scm.com/docs/pretty-formats
+git log --pretty=reference # one lines with subjects and dates
+git log --pretty=format:"%h%as%an%s"
+%h - short commint hash
+%as - short date
+%an - author name
+%s - subject
+
+# Undo cherry-pick
+git cherry-pick --abort
+
+# Checkout all unstaged changes
+git checkout -- .
+
+# Get current branch name
+git rev-parse --abbrev-ref HEAD
