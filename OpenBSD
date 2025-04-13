@@ -20,3 +20,10 @@ ftp
 
 # restart network for certain interface
 sh /etc/network <ifname>
+
+# tracing
+ktrace # generates ktrace.out file which can be read by kdump
+
+# list open files
+fstat
+

@@ -34,6 +34,12 @@ yum history undo <NUM> # never use it
 
 # List files of package
 repoquery -l <pkg_name>
+
+# Find deps for package
+repoquery --requiers <pkg>
+
+# Find dependant packages of package
+repoquery --whatrequires <pkg>
 =========================
 
 SELINUX
