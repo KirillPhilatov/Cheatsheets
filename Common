@@ -1,5 +1,8 @@
 MISC
 =========================
+# Show only changed lines in diff
+diff --unified=0
+
 # Rename file swaping spaces with underscores
 rename 's/ /_/g' *.mp3
 
@@ -148,6 +151,11 @@ lsblk --fs
 =========================
 # Get BIOS name of WIN machine
 nbtscan <ip>
+=========================
+# Adjust screen brightness
+echo 200 > /sys/class/backlight/intel_backlight/brightness
+xrandr --output <out> --brightness 0.8 # 1.0 - full brightness
+https://wiki.archlinux.org/title/Backlight
 =========================
 FIND
 # tutorial
