@@ -11,6 +11,9 @@ git stash save "message"
 # Get diff with stashed changes
 git stash show -p
 
+# Get N numbers of commits in log
+git log -N
+
 # Log formats
 https://git-scm.com/docs/pretty-formats
 git log --pretty=reference # one lines with subjects and dates
@@ -23,8 +26,26 @@ git log --pretty=format:"%h%as%an%s"
 # Undo cherry-pick
 git cherry-pick --abort
 
+# Cherry-pick without commiting
+git cherry-pick -n
+
 # Checkout all unstaged changes
 git checkout -- .
 
 # Get current branch name
 git rev-parse --abbrev-ref HEAD
+
+# Delete tag on remote server
+git push --delete origin <tag_name>
+
+# Rebase interactively
+git rebase -i
+
+# Git: delete and restore data
+https://git-scm.com/book/en/v2/Git-Internals-Maintenance-and-Data-Recovery
+
+# Git: rewrite history
+https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History
+
+# Git: reset explanation
+https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified
