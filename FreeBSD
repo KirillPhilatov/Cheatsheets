@@ -114,6 +114,8 @@ netstat -r
 # Listening ports
 sockstat -4 -l
 
+# Monitor network traffic on all interfaces
+systat -if 1
 
 Desktop and laptop
 ------------------
@@ -153,6 +155,13 @@ pw groupmod <group_name> -m <user>
 
 # strace
 truss
+
+# Get disk stats
+diskinfo -cvt nda0
+
+# iostat
+gstat -p -I 3s
+
 
 Updates
 -------
